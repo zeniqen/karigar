@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Karigar – Crafting Stories</title>
+  <title>Karigar – Your Skills, Your Credit, Your Future</title>
 
   <!-- Web‑font imports -->
   <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Astra+Sans&family=Manrope&display=swap"
@@ -11,88 +11,234 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- ==== NAVBAR ==== -->
-  <header class="navbar">
-    <a href="/" class="logo">
-      <img src="assets/karigar-logo.png" alt="Karigar logo">
-    </a>
-    <a href="#final-cta" class="cta">Get Started</a>
-  </header>
+  <div class="page">
+    <!-- ==== NAVBAR ==== -->
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          <a href="/" class="logo">
+            <!-- Using text logo as placeholder since image asset is empty -->
+            <span class="logo-text">Karigar</span>
+          </a>
+          <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#why-karigar">Why Karigar</a>
+            <a href="#final-cta" class="cta-primary">Get Started</a>
+          </nav>
+        </div>
+      </div>
+    </header>
 
-  <!-- ==== HERO ==== -->
-  <main>
+    <!-- ==== HERO ==== -->
     <section class="hero">
       <div class="container">
-        <!-- subtle contextual label -->
-        <span class="label">FOR THE PEOPLE WHO MAKE</span>
+        <div class="hero-content">
+          <div class="hero-text">
+            <!-- subtle contextual label -->
+            <span class="label uppercase">EMPOWERING THE INFORMAL WORKFORCE</span>
 
-        <!-- large heading -->
-        <h1>Every skill has a story.</h1>
+            <!-- large heading -->
+            <h1>Your Skills. Your Credit. Your Future.</h1>
 
-        <!-- supporting copy -->
-        <p class="subtitle">
-          A voice‑first platform that helps artisans share their craft with the world.
-        </p>
+            <!-- supporting copy -->
+            <p class="hero-subtitle">
+              The professional identity and financial tool for artisans and informal workers. Get recognized for your expertise and build a credit history based on trust.
+            </p>
 
-        <!-- primary CTA -->
-        <a href="#final-cta" class="cta">Get Started →</a>
+            <!-- primary CTA -->
+            <div class="hero-ctas">
+              <a href="#final-cta" class="cta-primary">Get Started →</a>
+              <a href="#how-it-works" class="cta-secondary">How it works</a>
+            </div>
+          </div>
 
-        <!-- visual element placeholder (replace with real illustration later) -->
-        <div class="hero-visual"></div>
+          <!-- visual element placeholder (replace with real illustration later) -->
+          <div class="hero-visual">
+            <!-- Craft-inspired visual will go here -->
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ==== WHY KARIGAR ==== -->
-    <section class="purpose">
+    <!-- ==== INTRO / VALUE PROPOSITION ==== -->
+    <section class="intro">
       <div class="container">
-        <h2>Skill shouldn’t be invisible.</h2>
-        <p>
-          Millions of artisans possess deep expertise that rarely reaches beyond their workshops.
-          Karigar gives them a simple, voice‑first way to capture, structure, and share their knowledge.
-        </p>
+        <div class="intro-box">
+          <span class="label uppercase">THE VISION</span>
+          <h2>Bridging the gap between skill and opportunity.</h2>
+          <p class="intro-text">
+            Millions of skilled workers lack a formal way to prove their expertise or access fair credit.
+            Karigar creates a voice-first professional identity and community-driven financial system—
+            allowing artisans to build a "Trust Score" and a "Skill Passport" without needing a smartphone
+            or a traditional bank account.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== WHAT KARIGAR DOES ==== -->
+    <section class="what-it-does">
+      <div class="container">
+        <span class="label uppercase">CORE FEATURES</span>
+        <h2>Empowering workers through trust and technology.</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 14a2 2 0 002-2V6a2 2 0 10-4 0v6a2 2 0 002 2zm0 8a4 4 0 01-4-4V8a4 4 0 018 0v2a4 4 0 01-4 4z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Skill Passport</h3>
+            <p>A professional identity built by your voice. No forms, no resumes—just your expertise, structured by AI.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 110-8 4 4 0 010 8zm10 14v-2a4 4 0 00-3-3.87m-4-12a4 4 0 01-4 4v10a4 4 0 01-4 4h12a4 4 0 014-4V7a4 4 0 01-4-4z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Lending Circles</h3>
+            <p>Community-powered savings. Secure, rotating savings groups to grow your business without the need for banks.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>CT Score</h3>
+            <p>Credit based on trust. A fair score that recognizes your reliability and tenure, opening doors to new opportunities.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ==== HOW IT WORKS ==== -->
-    <section class="steps">
+    <section class="how-it-works">
       <div class="container">
-        <h2>How it works</h2>
-        <ol class="step-list">
-          <li><strong>Speak</strong> – Share your experience in your own language.</li>
-          <li><strong>Listen</strong> – Karigar understands and organizes your story.</li>
-          <li><strong>Transform</strong> – Turn your story into a clear, shareable format.</li>
-        </ol>
+        <span class="label uppercase">HOW IT WORKS</span>
+        <h2>From voice to opportunity.</h2>
+        <div class="process">
+          <div class="step">
+            <div class="step-number">01</div>
+            <div class="step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 14a2 2 0 002-2V6a2 2 0 10-4 0v6a2 2 0 002 2zm0 8a4 4 0 01-4-4V8a4 4 0 018 0v2a4 4 0 01-4 4z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="step-content">
+              <h3>Voice-First Intake</h3>
+              <p>Speak naturally in your own language to create your AI-powered Skill Passport.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">02</div>
+            <div class="step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 110-8 4 4 0 010 8zm10 14v-2a4 4 0 00-3-3.87m-4-12a4 4 0 01-4 4v10a4 4 0 01-4 4h12a4 4 0 014-4V7a4 4 0 01-4-4z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="step-content">
+              <h3>Build Community Trust</h3>
+              <p>Join local lending circles to save and grow your capital alongside other artisans.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">03</div>
+            <div class="step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="step-content">
+              <h3>Earn Your Score</h3>
+              <p>Your reliability and tenure are converted into a CT Score that proves your trustworthiness.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">04</div>
+            <div class="step-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="step-content">
+              <h3>Unlock Opportunities</h3>
+              <p>Use your Passport and Score to access better work, fairer loans, and financial tools.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ==== OPTIONAL EXAMPLE ==== -->
-    <section class="example">
+    <!-- ==== WHY KARIGAR ==== -->
+    <section class="why-karigar">
       <div class="container">
-        <h2>What it looks like</h2>
-        <p class="small">
-          <!-- Illustrative mock‑up would appear here -->
-        </p>
+        <span class="label uppercase">WHY KARIGAR</span>
+        <h2>Technology that empowers the underserved.</h2>
+        <div class="differentiators">
+          <div class="differentiator">
+            <h3>Voice First</h3>
+            <p>No complicated forms or typing-heavy workflows. Just speak naturally in your own language.</p>
+          </div>
+          <div class="differentiator">
+            <h3>Truly Accessible</h3>
+            <p>Designed for everyone, including those without smartphones, via simple voice calls (IVR).</p>
+          </div>
+          <div class="differentiator">
+            <h3>Fair Credit</h3>
+            <p>A scoring system that recognizes community trust and reliability over traditional bank history.</p>
+          </div>
+          <div class="differentiator">
+            <h3>Professional Identity</h3>
+            <p>Turn years of informal experience into a structured, verified passport that opens new doors.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ==== FINAL CTA ==== -->
-    <section id="final-cta" class="final-cta">
+    <section class="final-cta">
       <div class="container">
-        <p>Your skill has a story to tell.</p>
-        <a href="#final-cta" class="cta">Get Started →</a>
+        <h2>Your skills are your strength.
+Let's make them count.</h2>
+        <p class="final-cta-text">
+          Join Karigar and start building your professional future today.
+        </p>
+        <a href="#" class="cta-primary">Get Started →</a>
       </div>
     </section>
-  </main>
 
-  <!-- ==== FOOTER ==== -->
-  <footer class="footer">
-    <div class="container">
-      <a href="/" class="logo">
-        <img src="assets/karigar-logo.png" alt="Karigar logo">
-      </a>
-      <p>&copy; Karigar. All rights reserved.</p>
-    </div>
-  </footer>
+    <!-- ==== FOOTER ==== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="/" class="logo">
+              <!-- Using text logo as placeholder since image asset is empty -->
+              <span class="logo-text">Karigar</span>
+            </a>
+            <p class="footer-tagline">Your Skills. Your Credit. Your Future.</p>
+          </div>
+
+          <nav class="footer-nav">
+            <a href="#about">Explore</a>
+            <a href="#about">Home</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#why-karigar">Why Karigar</a>
+            <a href="#final-cta">Get Started</a>
+          </nav>
+
+          <a href="#" class="cta-primary">Get Started</a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Karigar</p>
+        </div>
+      </div>
+    </footer>
+  </div>
 
   <script src="app.js"></script>
 </body>
