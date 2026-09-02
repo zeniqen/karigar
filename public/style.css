@@ -10,7 +10,7 @@
 
   /* Spacing */
   --gap: 1.5rem;
-  --section-gap: 5rem;
+  --section-gap: 3.5rem;
   --radius: 12px;
 
   /* Page layout */
@@ -218,7 +218,6 @@ p {
 .hero-visual {
   width: 100%;
   aspect-ratio: 1;
-  background: var(--dark);
   border-radius: var(--radius);
   position: relative;
   overflow: hidden;
@@ -226,13 +225,10 @@ p {
   align-items: center;
   justify-content: center;
 }
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  background: radial-gradient(circle at center, rgba(47, 107, 79, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* -------------------------------------------------
@@ -459,7 +455,6 @@ p {
   background: #f2ebd9; /* slightly darker cream for contrast */
   padding: var(--section-gap) 0;
   border-top: 1px solid rgba(90, 70, 54, 0.1);
-  margin-top: var(--section-gap);
 }
 .footer-content {
   display: flex;
@@ -524,8 +519,19 @@ p {
 }
 
 /* -------------------------------------------------
-   Responsive adjustments
+   Scroll Animations
    ------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 @media (max-width: 900px) {
   .hero-content {
     grid-template-columns: 1fr;

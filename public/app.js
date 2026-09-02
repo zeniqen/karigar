@@ -1,17 +1,54 @@
 /* -------------------------------------------------
-   Karigar – minimal landing‑page script
+   Karigar – Scroll Animations
    ------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-  const elements = document.querySelectorAll('h1, h2, h3, .label, .logo-text, .footer-tagline, .cta-primary, .cta-secondary, .feature-icon, .step-icon, .differentiator h3, .final-cta h2, .final-cta-text');
+  // Elements we want to animate in as we scroll
+  const revealElements = [
+    '.hero-text',
+    '.hero-visual',
+    '.intro-box',
+    '.feature-card',
+    '.step',
+    '.differentiator',
+    '.final-cta h2',
+    '.final-cta-text',
+    '.footer-content'
+  ];
 
-  const fadeIn = (el) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(12px)';
-    setTimeout(() => {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    }, 30);
+  const targets = document.querySelectorAll(revealElements.join(', '));
+
+  targets.forEach(el => {
+    el.classList.add('reveal');
+  });
+
+  // Add staggered delay for groups
+  const groupSelectors = ['.features-grid', '.process', '.differentiators'];
+  groupSelectors.forEach(selector => {
+    const group = document.querySelector(selector);
+    if (group) {
+      const children = group.querySelectorAll('.reveal');
+      children.forEach((child, index) => {
+        child.style.transitionDelay = `${index * 0.15}s`;
+      });
+    }
+  });
+
+  const observerOptions = {
+    root: null,
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
   };
 
-  elements.forEach(fadeIn);
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  targets.forEach(el => {
+    observer.observe(el);
+  });
 });
