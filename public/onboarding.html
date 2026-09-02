@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karigar – Skill Passport</title>
+  <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Astra+Sans&family=Manrope&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page onboarding-page">
+
+    <!-- SCREEN 1: Welcome -->
+    <section id="screen-welcome" class="onboarding-screen active">
+      <div class="onboarding-container">
+        <div class="onboarding-content">
+          <h1 class="center">Let's build your Skill Passport.</h1>
+          <p class="onboarding-subtitle center">
+            Tell us about the work you know best. You can speak naturally — no forms, no résumé needed.
+          </p>
+          <div class="onboarding-ctas center">
+            <button id="btn-start-talking" class="cta-primary">Start Talking</button>
+          </div>
+          <p class="onboarding-footer-text center">Your information belongs to you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: Voice Conversation -->
+    <section id="screen-conversation" class="onboarding-screen">
+      <div class="onboarding-container">
+        <div class="conversation-content">
+          <div class="question-box">
+            <span class="label uppercase">Question <span id="question-number">1</span> of 4</span>
+            <h2 id="current-question">What kind of work do you do?</h2>
+          </div>
+
+          <div class="voice-interaction">
+            <button id="btn-mic" class="mic-button">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" fill="currentColor"/>
+                <path d="M19 10v2a7 7 0 01-14 0v-2M12 18v4m-4 0h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <p id="voice-status">Tap the mic to start speaking</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: Passport Generation -->
+    <section id="screen-passport" class="onboarding-screen">
+      <div class="onboarding-container">
+        <!-- Processing State -->
+        <div id="passport-processing" class="processing-state">
+          <div class="spinner"></div>
+          <h2>Building your Skill Passport...</h2>
+        </div>
+
+        <!-- Final Passport State -->
+        <div id="passport-result" class="passport-result hidden">
+          <span class="label uppercase center">Your Skill Passport</span>
+          <div class="passport-card">
+            <div class="passport-header">
+              <h2 id="passport-name">Ramesh Kumar</h2>
+              <span class="trade-badge" id="passport-trade">Carpenter</span>
+            </div>
+            <div class="passport-details">
+              <div class="detail-item">
+                <span class="detail-label">Experience</span>
+                <span class="detail-value" id="passport-exp">8 years</span>
+              </div>
+              <div class="detail-item full">
+                <span class="detail-label">Specializations</span>
+                <ul id="passport-specs" class="specs-list">
+                  <li>Furniture making</li>
+                  <li>Wood joinery</li>
+                  <li>Cabinet installation</li>
+                </ul>
+              </div>
+              <div class="detail-item full">
+                <span class="detail-label">Capability Summary</span>
+                <p id="passport-summary" class="summary-text">
+                  "Demonstrates experience in furniture construction, wood joinery, and cabinet installation."
+                </p>
+              </div>
+            </div>
+          </div>
+          <p class="passport-disclaimer center">This is what we understood from you.</p>
+          <div class="onboarding-ctas center">
+            <button id="btn-passport-confirm" class="cta-primary">This looks right</button>
+            <button id="btn-passport-edit" class="cta-secondary">Edit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: Work Samples -->
+    <section id="screen-samples" class="onboarding-screen">
+      <div class="onboarding-container">
+        <div class="samples-content">
+          <h2 class="center">Show what you can do.</h2>
+          <p class="onboarding-subtitle center">Add photos or videos of your previous work.</p>
+
+          <div class="upload-area">
+            <input type="file" id="file-upload" multiple accept="image/*,video/*" hidden />
+            <button id="btn-add-sample" class="cta-secondary-outline">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4v16m8-8H4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              + Add Work Sample
+            </button>
+          </div>
+
+          <div id="samples-grid" class="samples-grid">
+            <!-- Previews will be added here -->
+          </div>
+
+          <div class="onboarding-ctas center">
+            <button id="btn-finish" class="cta-primary">Continue</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <script src="onboarding.js"></script>
+</body>
+</html>
