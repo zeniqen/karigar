@@ -189,7 +189,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (turn.type === 'question') {
       await updateOrbState('speaking');
       const fullResponse = `${turn.acknowledgment} ${turn.text}`;
-      transcriptText.innerHTML += `<strong>Karigar:</strong> ${fullResponse}<br>`;
+
+      const msg = document.createElement('div');
+      msg.className = 'message-ai';
+      msg.innerHTML = `<strong>Karigar:</strong> ${fullResponse}`;
+      transcriptText.appendChild(msg);
+      transcriptText.scrollTop = transcriptText.scrollHeight;
+
       await voiceService.speak(fullResponse);
       await updateOrbState('idle');
     } else {
@@ -210,7 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const userInput = await voiceService.listen(
       (text) => {
-        transcriptText.innerHTML = `<strong>You:</strong> ${text}<br>`;
+        const msg = document.createElement('div');
+        msg.className = 'message-user';
+        msg.innerHTML = `<strong>You:</strong> ${text}`;
+        transcriptText.appendChild(msg);
+        transcriptText.scrollTop = transcriptText.scrollHeight;
       },
       (err) => {
         console.error("Speech Error:", err);
@@ -272,7 +282,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!text) return;
 
     fallbackInput.value = '';
-    transcriptText.innerHTML += `<strong>You:</strong> ${text}<br>`;
+
+    const msg = document.createElement('div');
+    msg.className = 'message-user';
+    msg.innerHTML = `<strong>You:</strong> ${text}`;
+    transcriptText.appendChild(msg);
+    transcriptText.scrollTop = transcriptText.scrollHeight;
+
     await processUserInput(text);
   };
 

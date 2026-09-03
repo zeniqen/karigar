@@ -737,9 +737,11 @@ p {
 
 .transcript-area {
   width: 100%;
-  max-width: 400px;
-  text-align: center;
-  min-height: 80px;
+  max-width: 500px;
+  min-height: 120px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: var(--gap);
 }
 
 .transcript-text {
@@ -748,7 +750,34 @@ p {
   color: var(--brown);
   opacity: 0.7;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
+
+.message-ai, .message-user {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.message-ai {
+  align-self: flex-start;
+  background: rgba(47, 107, 79, 0.08);
+  border-bottom-left-radius: 2px;
+  text-align: left;
+}
+
+.message-user {
+  align-self: flex-end;
+  background: rgba(90, 70, 54, 0.1);
+  border-bottom-right-radius: 2px;
+  text-align: right;
+}
+
 
 .voice-controls {
   display: flex;
