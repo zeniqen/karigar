@@ -63,12 +63,10 @@ const conversationService = {
     maxTurns: 8
   },
 
-  // Mock "AI" response generator
   async getNextTurn(userInput) {
     this.state.capturedTurns++;
     const response = this.analyzeInput(userInput);
 
-    // Determine next question based on missing info
     let nextQuestion = "";
 
     if (!this.state.occupation) {
@@ -97,7 +95,6 @@ const conversationService = {
     const text = input.toLowerCase();
     let ack = "Got it.";
 
-    // Simple Keyword Extraction for Mock AI
     if (!this.state.occupation) {
       const trades = ['carpenter', 'tailor', 'weaver', 'mason', 'electrician', 'plumber', 'artist'];
       const found = trades.find(t => text.includes(t));
@@ -132,7 +129,7 @@ const conversationService = {
 
   generatePassport() {
     return {
-      name: 'Ramesh Kumar', // Prototype fallback
+      name: 'Ramesh Kumar',
       trade: this.state.occupation || 'Artisan',
       experience: this.state.experience || 'Experience not specified',
       specializations: this.state.specializations.length > 0
@@ -166,9 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const transcriptText = document.getElementById('transcript-text');
   const btnMic = document.getElementById('btn-mic');
   const btnEndConv = document.getElementById('btn-end-conversation');
+  const textFallback = document.getElementById('text-fallback');
+  const fallbackInput = document.getElementById('fallback-input');
+  const btnSendText = document.getElementById('btn-send-text');
 
   function showScreen(screenId) {
-    Object.values(screens).forEach(s => s.classList.remove('active'));
+    Object.values(screens).forEach(screen => screen.classList.remove('active'));
     screens[screenId].classList.add('active');
   }
 
@@ -182,50 +182,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  async function handleVoiceTurn() {
-    if (btnMic.classList.contains('active')) return;
-
-    // 1. Listen
-    btnMic.classList.add('active');
-    await updateOrbState('listening');
-
-    const userInput = await voiceService.listen(
-      (text) => {
-        transcriptText.innerHTML = `<strong>You:</strong> ${text}<br>`;
-      },
-      (err) => {
-        console.error("Speech Error:", err);
-        voiceStatus.textContent = "Sorry, I didn't catch that. Try again?";
-      }
-    );
-
-    if (!userInput) {
-      btnMic.classList.remove('active');
-      await updateOrbState('idle');
-      return;
-    }
-
-    // 2. Think
+  async function processUserInput(userInput) {
     await updateOrbState('thinking');
     const turn = await conversationService.getNextTurn(userInput);
 
-    // 3. Speak
     if (turn.type === 'question') {
       await updateOrbState('speaking');
       const fullResponse = `${turn.acknowledgment} ${turn.text}`;
-      transcriptText.innerHTML += `<strong>Karigar:</strong> ${fullResponse}<br>`;
+
+      const msg = document.createElement('div');
+      msg.className = 'message-ai';
+      msg.innerHTML = `<strong>Karigar:</strong> ${fullResponse}`;
+      transcriptText.appendChild(msg);
+      transcriptText.scrollTop = transcriptText.scrollHeight;
+
       await voiceService.speak(fullResponse);
       await updateOrbState('idle');
     } else {
-      // Complete
       await updateOrbState('speaking');
       await voiceService.speak(turn.text);
       setTimeout(() => {
         showPassport();
       }, 1000);
     }
+  }
+
+  async function handleVoiceTurn() {
+    if (btnMic.classList.contains('active')) return;
+
+    btnMic.classList.add('active');
+    textFallback.classList.add('hidden');
+    await updateOrbState('listening');
+
+    const userInput = await voiceService.listen(
+      (text) => {
+        const msg = document.createElement('div');
+        msg.className = 'message-user';
+        msg.innerHTML = `<strong>You:</strong> ${text}`;
+        transcriptText.appendChild(msg);
+        transcriptText.scrollTop = transcriptText.scrollHeight;
+      },
+      (err) => {
+        console.error("Speech Error:", err);
+        voiceStatus.textContent = "Microphone unavailable. Please type instead.";
+        textFallback.classList.remove('hidden');
+      }
+    );
+
+    if (userInput) {
+      await processUserInput(userInput);
+    }
 
     btnMic.classList.remove('active');
+    if (!textFallback.classList.contains('hidden')) {
+      await updateOrbState('idle');
+    }
   }
 
   function showPassport() {
@@ -244,19 +255,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const specsList = document.getElementById('passport-specs');
       specsList.innerHTML = '';
-      data.specializations.forEach(s => {
+      data.specializations.forEach(spec => {
         const li = document.createElement('li');
-        li.textContent = s;
+        li.textContent = spec;
         specsList.appendChild(li);
       });
       document.getElementById('passport-summary').textContent = `"${data.summary}"`;
     }, 2500);
   }
 
-  // Event Listeners
   document.getElementById('btn-start-talking').onclick = () => {
     showScreen('conversation');
-    // AI starts the conversation
     setTimeout(async () => {
       await updateOrbState('speaking');
       const firstQuestion = "Hello! I'm Karigar. I'd love to learn about your work. Tell me a little about what you do.";
@@ -267,6 +276,22 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   btnMic.onclick = handleVoiceTurn;
+
+  btnSendText.onclick = async () => {
+    const text = fallbackInput.value.trim();
+    if (!text) return;
+
+    fallbackInput.value = '';
+
+    const msg = document.createElement('div');
+    msg.className = 'message-user';
+    msg.innerHTML = `<strong>You:</strong> ${text}`;
+    transcriptText.appendChild(msg);
+    transcriptText.scrollTop = transcriptText.scrollHeight;
+
+    await processUserInput(text);
+  };
+
   btnEndConv.onclick = () => {
     if (confirm("End conversation and generate passport now?")) {
       showPassport();
@@ -276,7 +301,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-passport-confirm').onclick = () => showScreen('samples');
   document.getElementById('btn-passport-edit').onclick = () => alert("Editing coming soon!");
 
-  // Work Samples Logic
   const fileUpload = document.getElementById('file-upload');
   const samplesGrid = document.getElementById('samples-grid');
 
