@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Astra+Sans&family=Manrope&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="onboarding-body">
   <div class="page onboarding-page">
 
     <!-- SCREEN 1: Welcome -->
@@ -28,21 +28,38 @@
 
     <!-- SCREEN 2: Voice Conversation -->
     <section id="screen-conversation" class="onboarding-screen">
-      <div class="onboarding-container">
-        <div class="conversation-content">
-          <div class="question-box">
-            <span class="label uppercase">Question <span id="question-number">1</span> of 4</span>
-            <h2 id="current-question">What kind of work do you do?</h2>
-          </div>
+      <div class="voice-mode-container">
 
-          <div class="voice-interaction">
-            <button id="btn-mic" class="mic-button">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" fill="currentColor"/>
-                <path d="M19 10v2a7 7 0 01-14 0v-2M12 18v4m-4 0h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </button>
-            <p id="voice-status">Tap the mic to start speaking</p>
+        <div class="voice-visuals">
+          <div id="voice-orb" class="voice-orb idle">
+            <div class="orb-inner"></div>
+            <div class="orb-ring"></div>
+            <div class="orb-ring"></div>
+          </div>
+          <p id="voice-status">Tap the mic to start speaking</p>
+        </div>
+
+        <div class="transcript-area">
+          <div id="transcript-text" class="transcript-text">
+            <!-- Recent messages appear here -->
+          </div>
+        </div>
+
+        <div class="voice-controls">
+          <button id="btn-mic" class="mic-button">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" fill="currentColor"/>
+              <path d="M19 10v2a7 7 0 01-14 0v-2M12 18v4m-4 0h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button id="btn-end-conversation" class="btn-end-conv">End conversation</button>
+
+          <!-- Text Fallback Input -->
+          <div id="text-fallback" class="text-fallback hidden">
+            <div class="input-group">
+              <input type="text" id="fallback-input" placeholder="Type your answer here...">
+              <button id="btn-send-text" class="cta-primary">Send</button>
+            </div>
           </div>
         </div>
       </div>
@@ -54,7 +71,7 @@
         <!-- Processing State -->
         <div id="passport-processing" class="processing-state">
           <div class="spinner"></div>
-          <h2>Building your Skill Passport...</h2>
+          <h2 class="center">Building your Skill Passport...</h2>
         </div>
 
         <!-- Final Passport State -->
