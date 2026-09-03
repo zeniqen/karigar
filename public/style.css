@@ -19,6 +19,9 @@
 }
 
 /* -------------------------------------------------
+   Global Reset
+   ------------------------------------------------- */
+/* -------------------------------------------------
    Reset & global resets
    ------------------------------------------------- */
 *, *::before, *::after {
@@ -651,10 +654,161 @@ p {
 }
 
 /* -------------------------------------------------
-   Onboarding Flow
+   Marketplace Styles
    ------------------------------------------------- */
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--gap);
+  padding: var(--gap) 0;
+}
+
+.summary-card {
+  background: #fff;
+  border: 1px solid rgba(90, 70, 54, 0.1);
+  border-radius: var(--radius);
+  padding: var(--gap);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) / 2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.summary-card:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.summary-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.summary-card .trade-label {
+  font-family: 'Astra Sans', sans-serif;
+  font-weight: 600;
+  color: var(--green);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.summary-card .rating {
+  font-weight: 600;
+  color: var(--brown);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.summary-card .summary-text {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 36, 32, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--cream);
+  padding: var(--gap);
+  border-radius: var(--radius);
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s ease;
+}
+
+.close-modal:hover {
+  background: #f0f0f0;
+}
+
+.hire-button {
+  margin-top: var(--gap);
+  width: 100%;
+  text-align: center;
+}
+
+/* -------------------------------------------------
+   Onboarding Animation
+   ------------------------------------------------- */
+.arrow-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(47, 107, 79, 0.3);
+  animation: arrow-float 2s infinite ease-in-out;
+}
+
+.arrow-btn:hover {
+  background: #26553f;
+  transform: scale(1.1);
+}
+
+.arrow-btn:active {
+  transform: scale(0.95);
+}
+
+@keyframes arrow-float {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+
 .onboarding-page {
   min-height: 100vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
