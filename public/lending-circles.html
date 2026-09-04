@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karigar – Lending Circles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Astra+Sans&family=Manrope&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="lending-circles-body">
+  <div class="page">
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          <a href="index.html" class="logo">
+            <span class="logo-text">Karigar</span>
+          </a>
+          <nav class="nav-links">
+            <a href="onboarding.html">My Passport</a>
+            <a href="lending-circles.html" class="cta-primary">Lending Circles</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="lending-container">
+
+      <!-- SCREEN 1: HOME DASHBOARD -->
+      <section id="screen-home" class="lc-screen active">
+        <div class="lc-header">
+          <h1>Lending Circles</h1>
+          <p class="lc-subtitle">Save together. Support each other. Grow together.</p>
+        </div>
+
+        <div class="lc-actions">
+          <button id="btn-go-create" class="cta-primary">+ Create a Circle</button>
+          <button id="btn-go-find" class="cta-secondary-outline">Find a Circle</button>
+        </div>
+
+        <!-- Next Contribution Alert -->
+        <div id="next-contribution-alert" class="contribution-alert hidden">
+          <div class="alert-content">
+            <div class="alert-text">
+              <span class="label uppercase">Your Next Contribution</span>
+              <h3 id="alert-amount">₹1,000</h3>
+              <p id="alert-due">Due in 4 days</p>
+            </div>
+            <button id="btn-alert-view" class="cta-primary">View Circle</button>
+          </div>
+        </div>
+
+        <div class="your-circles-section">
+          <h2 class="section-title">Your Circles</h2>
+          <div id="my-circles-grid" class="circles-grid">
+            <!-- Mock circles will be rendered here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: CREATE A CIRCLE -->
+      <section id="screen-create" class="lc-screen hidden">
+        <div class="lc-header">
+          <button class="btn-back" id="btn-back-home">← Back</button>
+          <h1>Create a Lending Circle</h1>
+          <p class="lc-subtitle">Set up a circle and invite people you trust.</p>
+        </div>
+
+        <div class="create-layout">
+          <div class="create-form">
+            <div class="form-group">
+              <label>Circle Name</label>
+              <input type="text" id="create-name" placeholder="e.g., Carpenter's Circle">
+            </div>
+            <div class="form-group">
+              <label>Contribution Amount (₹)</label>
+              <input type="number" id="create-amount" placeholder="1000" value="1000">
+            </div>
+            <div class="form-group">
+              <label>Frequency</label>
+              <select id="create-frequency">
+                <option value="Weekly">Weekly</option>
+                <option value="Monthly" selected>Monthly</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Number of Members</label>
+              <input type="number" id="create-members" placeholder="8" value="8">
+            </div>
+            <div class="form-group">
+              <label>First Payout Date</label>
+              <input type="date" id="create-date">
+            </div>
+            <div class="form-group">
+              <label>Payout Order</label>
+              <div class="radio-group">
+                <label><input type="radio" name="payout-order" value="manual" checked> Set order manually</label>
+                <label><input type="radio" name="payout-order" value="random"> Random order</label>
+              </div>
+            </div>
+            <button id="btn-confirm-create" class="cta-primary">Create Circle</button>
+          </div>
+
+          <div class="create-summary">
+            <span class="label uppercase">Your Circle</span>
+            <div class="summary-card">
+              <div class="summary-item">
+                <span>Members:</span> <strong id="sum-members">8</strong>
+              </div>
+              <div class="summary-item">
+                <span>Contribution:</span> <strong id="sum-amount">₹1,000 / month</strong>
+              </div>
+              <div class="summary-divider"></div>
+              <div class="summary-item total">
+                <span>Monthly Pool:</span> <strong id="sum-pool">₹8,000</strong>
+              </div>
+              <div class="summary-item">
+                <span>Cycle Length:</span> <strong id="sum-cycle">8 months</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: FIND A CIRCLE -->
+      <section id="screen-find" class="lc-screen hidden">
+        <div class="lc-header">
+          <button class="btn-back" id="btn-back-find">← Back</button>
+          <h1>Find a Lending Circle</h1>
+          <p class="lc-subtitle">Find a circle that fits your work and contribution level.</p>
+        </div>
+
+        <div class="find-controls">
+          <input type="text" id="find-search" placeholder="Search by trade or location...">
+          <select id="find-filter-amount">
+            <option value="">Any Amount</option>
+            <option value="500">Up to ₹500</option>
+            <option value="1000">Up to ₹1,000</option>
+            <option value="2000">Up to ₹2,000</option>
+          </select>
+        </div>
+
+        <div id="available-circles-grid" class="circles-grid">
+          <!-- Available circles rendered here -->
+        </div>
+      </section>
+
+      <!-- SCREEN 4: CIRCLE DETAILS -->
+      <section id="screen-details" class="lc-screen hidden">
+        <div class="lc-header">
+          <button class="btn-back" id="btn-back-details">← Back</button>
+          <h1 id="det-name">Circle Name</h1>
+          <p class="lc-subtitle" id="det-meta">₹1,000 / month • 8 members • Monthly</p>
+        </div>
+
+        <div class="details-content">
+          <!-- Pool Status -->
+          <div class="pool-status-card">
+            <span class="label uppercase">This Month's Pool</span>
+            <h2 id="det-pool-amount">₹8,000</h2>
+            <p>Payout recipient: <strong id="det-recipient">Ramesh Kumar</strong></p>
+          </div>
+
+          <!-- Contributions -->
+          <div class="contributions-section">
+            <h3 class="section-title">Contributions</h3>
+            <div id="det-contributions-list" class="contribution-list">
+              <!-- Member check-list rendered here -->
+            </div>
+          </div>
+
+          <!-- User Payment Action -->
+          <div id="user-payment-area" class="user-payment-card hidden">
+            <div class="payment-info">
+              <span class="label uppercase">Your Contribution</span>
+              <h3>₹1,000</h3>
+              <p>Due today</p>
+            </div>
+            <button id="btn-mark-paid" class="cta-primary">Mark as Paid</button>
+          </div>
+
+          <!-- Rotation Timeline -->
+          <div class="rotation-section">
+            <h3 class="section-title">Payout Order</h3>
+            <div id="det-rotation-timeline" class="rotation-timeline">
+              <!-- Timeline rendered here -->
+            </div>
+          </div>
+
+          <!-- Activity Feed -->
+          <div class="activity-section">
+            <h3 class="section-title">Recent Activity</h3>
+            <div id="det-activity-feed" class="activity-feed">
+              <!-- Activity items rendered here -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="index.html" class="logo">
+              <span class="logo-text">Karigar</span>
+            </a>
+            <p class="footer-tagline">Your Skills. Your Credit. Your Future.</p>
+          </div>
+
+          <nav class="footer-nav">
+            <a href="index.html#about">About</a>
+            <a href="lending-circles.html">Lending Circles</a>
+            <a href="index.html#why-karigar">Why Karigar</a>
+            <a href="onboarding.html" class="cta-primary">Get Started</a>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Karigar</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="lending-circles.js"></script>
+</body>
+</html>

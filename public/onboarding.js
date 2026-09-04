@@ -320,7 +320,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   document.getElementById('btn-finish').onclick = () => {
-    alert("Your Skill Passport is complete!");
-    window.location.href = 'index.html';
+    showScreen('next-step');
   };
 });
