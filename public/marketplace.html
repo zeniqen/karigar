@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karigar Marketplace – Find Your Expert</title>
+
+  <!-- Web‑font imports -->
+  <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Astra+Sans&family=Manrope&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <!-- ==== NAVBAR ==== -->
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          <a href="/" class="logo">
+            <span class="logo-text">Karigar</span>
+          </a>
+          <button class="nav-toggle" aria-label="Toggle navigation"><span class="hamburger"></span>
+          </button>
+          <nav class="nav-links">
+            <a href="index.html#about">About</a><a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#why-karigar">Why Karigar</a>
+            <a href="marketplace.html">Marketplace</a>
+            <a href="onboarding.html" class="cta-primary">Get Started</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==== MARKETPLACE HERO ==== -->
+    <section class="hero" style="min-height: 40vh;">
+      <div class="container">
+        <div class="hero-content" style="grid-template-columns: 1fr;">
+          <div class="hero-text" style="text-align: center;">
+            <span class="label uppercase">FIND YOUR EXPERT</span>
+            <h1>Karigar Marketplace</h1>
+            <p class="hero-subtitle" style="margin: 0 auto var(--gap);">
+              Browse the finest artisans and craftspeople. Verified skills, community trust, and professional identity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== MARKETPLACE GRID ==== -->
+    <section class="marketplace">
+      <div class="container">
+        <div id="karigar-grid" class="marketplace-grid">
+          <!-- Dynamic Karigar cards will be injected here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== PASSPORT MODAL ==== -->
+    <div id="passport-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" id="close-modal">&times;</button>
+        <div id="passport-container">
+          <!-- Full passport-card will be injected here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ==== FOOTER ==== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <a href="/" class="logo">
+              <span class="logo-text">Karigar</span>
+            </a>
+            <p class="footer-tagline">Your Skills. Your Credit. Your Future.</p>
+          </div>
+
+          <nav class="footer-nav">
+            <a href="index.html#about">Explore</a>
+            <a href="index.html">Home</a>
+            <a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#why-karigar">Why Karigar</a>
+            <a href="marketplace.html">Marketplace</a>
+            <a href="index.html#final-cta">Get Started</a>
+          </nav>
+
+          <a href="onboarding.html" class="cta-primary">Get Started</a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Karigar</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="marketplace.js"></script>
+</body>
+</html>
