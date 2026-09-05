@@ -154,9 +154,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const screens = {
     welcome: document.getElementById('screen-welcome'),
     conversation: document.getElementById('screen-conversation'),
+    profilePhoto: document.getElementById('screen-profile-photo'),
     passport: document.getElementById('screen-passport'),
     samples: document.getElementById('screen-samples')
   };
+
+  let userPhoto = null;
+  const genericPhoto = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228fL';
 
   const orb = document.getElementById('voice-orb');
   const voiceStatus = document.getElementById('voice-status');
@@ -170,6 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function showScreen(screenId) {
     Object.values(screens).forEach(screen => screen.classList.remove('active'));
     screens[screenId].classList.add('active');
+  }
+
+  function showProfilePhotoScreen() {
+    showScreen('profilePhoto');
   }
 
   async function updateOrbState(state) {
@@ -202,10 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
       await updateOrbState('speaking');
       await voiceService.speak(turn.text);
       setTimeout(() => {
-        showPassport();
+        showProfilePhotoScreen();
       }, 1000);
     }
   }
+
 
   async function handleVoiceTurn() {
     if (btnMic.classList.contains('active')) return;
@@ -249,9 +258,11 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('passport-result').classList.remove('hidden');
 
       const data = conversationService.generatePassport();
+      document.getElementById('passport-photo').src = userPhoto || genericPhoto;
       document.getElementById('passport-name').textContent = data.name;
       document.getElementById('passport-trade').textContent = data.trade;
       document.getElementById('passport-exp').textContent = data.experience;
+
 
       const specsList = document.getElementById('passport-specs');
       specsList.innerHTML = '';
@@ -301,7 +312,35 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-passport-confirm').onclick = () => showScreen('samples');
   document.getElementById('btn-passport-edit').onclick = () => alert("Editing coming soon!");
 
+  // Profile Photo Logic
+  const profilePhotoInput = document.getElementById('profile-photo-input');
+  const photoPreview = document.getElementById('photo-preview');
+
+  document.getElementById('btn-upload-photo').onclick = () => profilePhotoInput.click();
+
+  profilePhotoInput.onchange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        userPhoto = ev.target.result;
+        photoPreview.src = userPhoto;
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  document.getElementById('btn-photo-skip').onclick = () => {
+    userPhoto = null;
+    showPassport();
+  };
+
+  document.getElementById('btn-photo-confirm').onclick = () => {
+    showPassport();
+  };
+
   const fileUpload = document.getElementById('file-upload');
+
   const samplesGrid = document.getElementById('samples-grid');
 
   document.getElementById('btn-add-sample').onclick = () => fileUpload.click();

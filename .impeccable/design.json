@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-04T12:00:00Z",
+  "title": "Design System: Karigar",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Forest Veridian",
+        "canonical": "#2F6B4F",
+        "tonalRamp": ["#1a362a", "#244d3a", "#2f6b4f", "#468a6b", "#5ca386", "#7ec4a2", "#a1d6b9", "#cdece2"]
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Terracotta Earth",
+        "canonical": "#E8753D",
+        "tonalRamp": ["#6b3a21", "#a35534", "#e8753d", "#f29466", "#f5b08b", "#f8ccb3", "#fbe6da", "#fdf5f1"]
+      },
+      "tertiary": {
+        "role": "tertiary",
+        "displayName": "Golden Harvest",
+        "canonical": "#F2C94C",
+        "tonalRamp": ["#7d6424", "#b39536", "#f2c94c", "#f5d76b", "#f8e491", "#fbf0b8", "#fdf8e1", "#fefef5"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Heirloom Parchment",
+        "canonical": "#FFF8EA",
+        "tonalRamp": ["#5a4636", "#8c745a", "#bc9e7d", "#dec8ad", "#f2e0c8", "#f7eadd", "#fff8ea", "#fffdfa"]
+      },
+      "neutral-text": {
+        "role": "neutral",
+        "displayName": "Earthy Umber",
+        "canonical": "#5A4636",
+        "tonalRamp": ["#2a2119", "#423427", "#5a4636", "#766352", "#92806c", "#ae9c88", "#cbbaa4", "#e8d7c0"]
+      },
+      "neutral-dark": {
+        "role": "neutral",
+        "displayName": "Deep Charcoal",
+        "canonical": "#242424",
+        "tonalRamp": ["#121212", "#1a1a1a", "#242424", "#3b3b3b", "#565656", "#717171", "#8c8c8c", "#a7a7a7"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines" },
+      "headline": { "displayName": "Headline", "purpose": "Section headers" },
+      "title": { "displayName": "Title", "purpose": "Card and sub-section headings" },
+      "body": { "displayName": "Body", "purpose": "Primary reading text" },
+      "label": { "displayName": "Label", "purpose": "Contextual labels and metadata" }
+    },
+    "shadows": [
+      { "name": "ambient-glow", "value": "0 10px 30px rgba(0, 0, 0, 0.03)", "purpose": "Low-profile lift for main containers" },
+      { "name": "interactive-lift", "value": "0 4px 12px rgba(0, 0, 0, 0.05)", "purpose": "Hover state signal" }
+    ],
+    "motion": [
+      { "name": "heritage-ease", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Standard easing for reveals and transitions" },
+      { "name": "organic-bounce", "value": "cubic-bezier(0.34, 1.56, 0.64, 1)", "purpose": "Tactile micro-interactions" }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "900px" },
+      { "name": "sm", "value": "600px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action trigger in Forest Veridian.",
+      "html": "<a href=\"#\" class=\"ds-btn-primary\">Get Started →</a>",
+      "css": ".ds-btn-primary { background: #2F6B4F; color: #fff; padding: 0.5rem 2.25rem; border-radius: 12px; text-decoration: none; font-weight: 600; font-family: 'Manrope', sans-serif; display: inline-block; transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); border: none; cursor: pointer; } .ds-btn-primary:hover { background: #26553f; transform: scale(1.03) translateY(-2px); }"
+    },
+    {
+      "name": "Feature Card",
+      "kind": "card",
+      "refersTo": "card-base",
+      "description": "A clean, white container for highlighting features.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#2F6B4F\" stroke-width=\"2\"><path d=\"M12 14a2 2 0 002-2V6a2 2 0 10-4 0v6a2 2 0 002 2zm0 8a4 4 0 01-4-4V8a4 4 0 018 0v2a4 4 0 01-4 4z\"/></svg></div><h3>Skill Passport</h3><p>A professional identity built by your voice.</p></div>",
+      "css": ".ds-card { background: #fff; border: 1px solid rgba(90, 70, 54, 0.08); border-radius: 12px; padding: 1.5rem; text-align: left; transition: all 0.2s ease; font-family: 'Manrope', sans-serif; color: #5A4636; } .ds-card:hover { border-color: rgba(90, 70, 54, 0.15); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); } .ds-card-icon { width: 48px; height: 48px; background: rgba(47, 107, 79, 0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; } .ds-card h3 { font-family: 'Astra Sans', sans-serif; font-weight: 600; font-size: 1.25rem; margin: 0 0 0.375rem 0; color: #5A4636; } .ds-card p { font-size: 1rem; margin: 0; line-height: 1.7; opacity: 0.9; }"
+    },
+    {
+      "name": "Voice Orb (Idle)",
+      "kind": "custom",
+      "refersTo": "voice-orb",
+      "description": "The central interactive element of the voice interface.",
+      "html": "<div class=\"ds-orb-idle\"><div class=\"ds-orb-inner\"></div></div>",
+      "css": ".ds-orb-idle { width: 180px; height: 180px; border-radius: 50%; background: #2F6B4F; position: relative; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 40px rgba(47, 107, 79, 0.3); animation: ds-orb-breath 4s infinite ease-in-out; } .ds-orb-inner { width: 60%; height: 60%; background: rgba(255, 255, 255, 0.2); border-radius: 50%; } @keyframes ds-orb-breath { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }"
+    },
+    {
+      "name": "Passport Card",
+      "kind": "card",
+      "refersTo": "passport-card",
+      "description": "A structured identity document for the artisan.",
+      "html": "<div class=\"ds-passport\"><div class=\"ds-passport-header\"><h2>Rahul Sharma</h2><span class=\"ds-trade-badge\">Potter</span></div><div class=\"ds-passport-detail\"><span class=\"ds-detail-label\">CT Score</span><span class=\"ds-detail-value\">840</span></div></div>",
+      "css": ".ds-passport { background: #fff; border: 1px solid rgba(90, 70, 54, 0.1); border-radius: 12px; padding: 3rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); font-family: 'Manrope', sans-serif; } .ds-passport-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(90, 70, 54, 0.1); padding-bottom: 1.5rem; } .ds-passport-header h2 { font-family: 'Yatra One', cursive; font-size: 2rem; margin: 0; color: #5A4636; } .ds-trade-badge { background: #2F6B4F; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.875rem; font-weight: 600; font-family: 'Astra Sans', sans-serif; } .ds-passport-detail { display: flex; justify-content: space-between; align-items: baseline; } .ds-detail-label { font-family: 'Astra Sans', sans-serif; font-weight: 600; color: #2F6B4F; font-size: 0.875rem; text-transform: uppercase; } .ds-detail-value { color: #5A4636; font-weight: 500; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Digital Guildhall",
+    "overview": "Karigar is designed as an intersection of ancestral craftsmanship and futuristic digital utility. The visual world evokes the feeling of a prestigious, timeless guild—where the warmth of traditional materials meets the precision of modern technology. It is a space of dignity, intended to make the informal worker feel seen, respected, and professionally empowered.",
+    "keyCharacteristics": [
+      "Heritage Materials: A palette grounded in earth, forest, and parchment.",
+      "Cultural Typography: A pairing of soulful, calligraphic headings with a clean, modern interface.",
+      "Tactile Depth: Subtle tonal layering that mimics the feel of high-quality paper and fabric.",
+      "Organic Motion: Soft, fluid transitions (like ink effects) that reflect the fluidity of human voice and craft."
+    ],
+    "rules": [
+      { "name": "The Heirloom Rule", "body": "Use Heirloom Parchment for all major backgrounds to maintain the archival feel.", "section": "colors" },
+      { "name": "The Heritage Bridge Rule", "body": "Always pair Yatra One headings with Manrope body text to maintain the bridge between tradition and future.", "section": "typography" },
+      { "name": "The Soften Rule", "body": "Avoid sharp corners; every element should feel softened and approachable with the 12px radius.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do use Heirloom Parchment for all major backgrounds.",
+      "Do pair Yatra One headings with Manrope body text.",
+      "Do use the 12px radius consistently."
+    ],
+    "donts": [
+      "Don't use pure white (#FFFFFF) as a full-page background.",
+      "Don't use harsh, high-contrast black (#000) for text.",
+      "Don't use sharp corners."
+    ]
+  }
+}
